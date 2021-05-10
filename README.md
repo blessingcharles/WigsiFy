@@ -1,11 +1,14 @@
 # WigsiFy
-project wigsify backend [ nodejs + mysql ]
-/api
+## project wigsify backend [ nodejs + mysql ]
+
+
+    /api
+
     ----> /users
-                /               (get all user names)
-                /signup [post]  (json {name,password,email})   return {email,token,usrId}
-                /login  [post]   (json {name, email})          return{email,token}
-                /about/:userid  (get user info by userid)      
+                /              
+                /signup
+                /login 
+                /about/:userid      
                 
                 
     -----> /posts
@@ -30,6 +33,7 @@ project wigsify backend [ nodejs + mysql ]
     ------> /chats
                 /:userid
                 
+
 /uploads/images
 
 
