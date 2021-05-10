@@ -1,5 +1,3 @@
-# WigsiFy
-project wigsify backend [ nodejs + mysql ]
 /api
     ----> /users
                 /               (get all user names)
