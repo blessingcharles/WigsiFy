@@ -9,14 +9,52 @@
                 /signup
                 /login 
                 /about/:userid      
+ 
+    /api
+    ----> /users
+                /               (get all user names)
+                /signup [post]  (json {name,password,email})   return {email,token,usrId}
+                /login  [post]   (json {name, email})          return{email,token}
+                /about/:userid  (get user info by userid)      
                 
+                /profile/:uid  [get all user info]
                 
+                [jwt token mandatory]
+
+                /profile
+                    / [get all info about the current logged in user]
+                    / [patch]   //[you can update name ,FavLang,About , profession , mobile]
+                    /profilepic [post]  ['profilepic':'imgdata']    update default profile profilepic
+
     -----> /posts
+                /   [post ]
                 /:pid
                 /user/:uid
                 /:pid [delete]
                 /:pid [patch ]
             
+    ---------> /friends
+
+                    --> /followers/:uid  [get all followers as an array for given uid]
+                    --> /following/:uid  [get all following as an array for given uid]
+                    
+                    --> /followers/count/:uid [ get followers total_count ]
+                    --> /following/count/:uid [get following total_count ]
+
+                    [need jwt auth]
+
+                    --> /follow  [post] {fid: friendid}  
+                    --> /unfollow [post] {fid: friendid}
+
+
+
+    --------> /songs
+                    --> /album
+                        ----> /authur
+                        -----> /songs
+
+    -------->socialmedia
+                -----> /
 
     -----> /code
                 /user/:uid
@@ -31,9 +69,10 @@
                 /status/:uid
 
     ------> /chats
-                /:userid
-                
+                /:fid       [give the recent 100 msgs between uid and fid]
 
-/uploads/images
+    /uploads/images
+    /uploads/profile
+    /uploads/songs
 
 
