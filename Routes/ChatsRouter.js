@@ -8,12 +8,12 @@ const getChats = require('../controllers/chats/chats-controller');
 const ChatsRouter = express.Router();
 
 
-UserRoutes.use(verifyJWT);
+ChatsRouter.use(verifyJWT);
 
 /*[userid will be taken from jwt need to post {
     friend id and no of messages
 }] */
-UserRoutes.post('/',
+ChatsRouter.post('/',
     [check('fid').not().isEmpty()],
     getChats)
 

@@ -8,8 +8,8 @@ const userProfileUpdate = (req,res,next)=>{
 
     //validating the request
     const error = validationResult(req);
-    const {name,about,favlang} = req.body;
-
+    const {name,About,FavLang,profession,mobile} = req.body;
+    console.log(name,About,FavLang,profession,mobile)
     if(!error.isEmpty()){
         //given data is not img type
         return res.status(400).json({error:"invalid data"})
@@ -33,7 +33,7 @@ const userProfileUpdate = (req,res,next)=>{
                 }
                 else{
                     const userid = results.id ;
-                    sql = `update users set name="${name}",About="${about}",FavLang="${favlang}" where id = "${userid}"`
+                    sql = `update users set name="${name}",About="${About}",FavLang="${FavLang}",profession="${profession}",mobile="${mobile}" where id = "${userid}"`
                     
                     //updating profile data into db 
 

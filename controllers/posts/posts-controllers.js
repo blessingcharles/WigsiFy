@@ -1,7 +1,7 @@
 const {validationResult} = require('express-validator');
 const httpError = require('../../Models/http-error')
 
-const execSql = require('../../db/execSql');
+
 
 const errorHandler = (msg,code)=>{
 
@@ -14,7 +14,6 @@ const errorHandler = (msg,code)=>{
 
 //handling get request
 const getpostsById =async (req,res,next)=>{
-    let posts ;
     let postsId = req.params.pid ;
 
     let sql = `select * from posts where postid=${postsId}`;
@@ -92,7 +91,8 @@ const createposts = async (req,res,next)=>{
                         else{
 
                             res.status(201);
-                            res.json({posts:name});
+
+                            res.json({name:name,userid:userid,imgpath:imgpath,description:description});
                         }
                     })
 

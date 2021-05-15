@@ -25,7 +25,7 @@ const getUsers =async (req,res,next)=>{
 // return user info by userid [ /about/:userid ]
 const getUserInfo =async (req,res,next)=>{
     let userid = req.params.userid ;
-    sql = `select id,name,About,FavLang,email from users where id = "${userid}"`
+    sql = `select id,name,About,FavLang,email ,mobile,profession from users where id = "${userid}"`
 
     db.query(sql,(error,results)=>{
         
@@ -93,7 +93,7 @@ const userSignUp =async (req,res,next)=>{
                 //getting the userid for signing jwt token
 
                 sql = `select * from users where email="${email}"`;
-                console.log(sql);
+             //   console.log(sql);
                 execSql(next,sql,(next,error,results)=>{
         
                     if(error) next(error) ;
@@ -106,7 +106,7 @@ const userSignUp =async (req,res,next)=>{
                         
                         res
                         .status(201)
-                        .json({email:email,token:token});
+                        .json({email:email,token:token,id:results.id});
         
                     }
                     catch(err){

@@ -5,7 +5,9 @@ const { userSignUp,
     getUsers,
     getUserInfo } = require('../controllers/users/users-controllers.js');
 
-const {userProfilePicUpload , dummy ,userProfileUpdate}= require('../controllers/users/users-profile-controllers');
+const {userProfilePicUpload , dummy ,userProfileUpdate }= require('../controllers/users/users-profile-controllers');
+
+const {getCurrentUserAllInfo , getUserAllInfo} = require('../controllers/users/profile-allinfo-user');
 
 const verifyJWT = require('../middlewares/verify-jwt')
 const ProfileUploader = require('../middlewares/ProfileUploader');
@@ -29,14 +31,21 @@ UserRoutes.post('/login',[
     check('email').isEmail()
 ],userLogIn)
 
+UserRoutes.get('/profile/:uid',getUserAllInfo)
+
 //need jwt token to access the below routes
 UserRoutes.use(verifyJWT);
+
+// get current user all info
+UserRoutes.get('/profile',getCurrentUserAllInfo)
 
 // user profile update
 UserRoutes.patch('/profile',[
     check('name').not().isEmpty(),
-    check('about').not().isEmpty(),
-    check('favlang').not().isEmpty()
+    check('About').not().isEmpty(),
+    check('FavLang').not().isEmpty(),
+    check('mobile').not().isEmpty(),
+    check('profession').not().isEmpty()
 ],userProfileUpdate);
 
 
