@@ -8,7 +8,14 @@
                 /login  [post]   (json {name, email})          return{email,token}
                 /about/:userid  (get user info by userid)      
                 
-                
+                [jwt token mandatory]
+
+                /profile
+                    / [patch]   //[you can update name ,FavLang,About]
+                    /profilepic [post]  ['profilepic':'imgdata']    update default profile profilepic
+
+
+
     -----> /posts
                 /:pid
                 /user/:uid

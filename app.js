@@ -9,6 +9,7 @@ const getUsers = require('./test');
 const db_connect = require('./db/dbObj');
 const UserRoutes = require('./Routes/UserRouter');
 const PostsRoutes = require('./Routes/PostsRouter');
+const ChatsRouter = require('./Routes/ChatsRouter');
 
 // config file [.env ]
 dotenv.config();
@@ -29,13 +30,14 @@ app.use((req,res,next)=>{
 //REST API
 app.use('/api/users',UserRoutes);
 app.use('/api/posts',PostsRoutes);
-app.use('/uploads/images',express.static(path.join('uploads','images')))
--
-app.get('/getusers',getUsers)
+app.use('/api/chats',ChatsRouter);
+app.use('/uploads/images',express.static(path.join('uploads','images')));
+app.use('/uploads/profiles',express.static(path.join('uploads','profiles')));
+app.use('/uploads/songs',express.static(path.join('uploads','songs')));
 
 
-
-
+//testing route
+//app.get('/getusers',getUsers)
 
 //error handling
 app.use((req,res,next)=>{

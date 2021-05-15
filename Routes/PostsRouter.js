@@ -2,11 +2,6 @@ const express = require('express')
 const {check} = require('express-validator');
 const imageUploader = require('../middlewares/ImageUploader')
 const verifyJWT = require('../middlewares/verify-jwt')
-// const {getpostsById , 
-//       getpostsByCreatorId, 
-//       createposts ,
-//       updateposts,
-//       deleteposts} = require('../controllers/posts-countrollers')
 
 const  {
     getpostsByCreatorId,
@@ -14,7 +9,7 @@ const  {
     createposts,
     updateposts,
     deleteposts
-} = require('../controllers/posts-controllers')
+} = require('../controllers/posts/posts-controllers')
 
 
 const postsrouter = express.Router()
