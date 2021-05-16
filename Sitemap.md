@@ -1,5 +1,6 @@
 /api
-    ----> /users
+    ----> /users            
+                
                 /               (get all user names)
                 /signup [post]  (json {name,password,email})   return {email,token,usrId}
                 /login  [post]   (json {name, email})          return{email,token}
@@ -18,6 +19,7 @@
 
 
     -----> /posts
+                
                 /   [post ]
                 /:pid
                 /user/:uid

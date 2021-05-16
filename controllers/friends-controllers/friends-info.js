@@ -62,7 +62,10 @@ const getFollowers = (req,res,next)=>{
 
     if(uid){
 
-        let sql = `select uid from friends where follow = "${uid}"`;
+        let sql = `select id , name , email ,FavLang , About , profession , mobile , profile_pic_path from users 
+                     where id in 
+                     (select uid from friends where follow = "${uid}" )` ;
+       
 
         db.query(sql,(error,results)=>{
 
@@ -92,15 +95,15 @@ const getFollowing = (req,res,next)=>{
 
     if(uid){
 
-        let sql = `select follow as uid from friends where uid = "${uid}"`;
+        let sql = `select id , name , email ,FavLang , About , profession , mobile , profile_pic_path from users 
+                    where id in 
+                    (select follow as uid from friends where uid = "${uid}" )`;
 
         db.query(sql,(error,results)=>{
              if (results){
-                console.log(results)
-                 let following = results
-                res.status(200).json({
-                     following
-                })
+                
+                res.status(200).json(results);
+               
             }
             else{
 

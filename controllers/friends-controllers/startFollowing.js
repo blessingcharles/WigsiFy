@@ -36,21 +36,32 @@ const startFollowing = (req,res,next)=>{
 
                 }
                 else{
-                   
                     const userid = results.id ;
-                    // userid follows fid 
-                    sql = `insert into friends (uid,follow) values("${userid}","${fid}")`
-
+                    sql = `select * from friends where uid="${userid}" and follow="${fid}"`;
+                    
+                    //checking if user already followed the given user
                     db.query(sql,(error,results)=>{
-                        if(error) res.status(400).json({error:"couldnot follow the user"})
-                        else{
+                        if(error) res.status(500).json({error:"something went wrong"});
 
-                            res.status(201);
-                            res.json({uid:userid , fid,fid});
+                        else if(results[0]) {
+                            res.status(400).json({error:"you have already followed this user"});
                         }
-                    })
+                        else{
+                                 // userid follows fid 
+                            sql = `insert into friends (uid,follow) values("${userid}","${fid}")`
+
+                            db.query(sql,(error,results)=>{
+                                if(error) res.status(400).json({error:"couldnot follow the user"})
+                                else{
+
+                                    res.status(201);
+                                    res.json({uid:userid , fid,fid});
+                                }
+                            })
+                    }
+                })
             }
-            })
+        })       
         
         }
         catch(error){
