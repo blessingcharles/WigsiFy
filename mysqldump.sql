@@ -102,6 +102,30 @@ INSERT INTO `Y3PXiWttykMs1EfZ6B1295EGOLN3v6u4` VALUES (21,'hii da','2021-05-14 1
 UNLOCK TABLES;
 
 --
+-- Table structure for table `album_songs`
+--
+
+DROP TABLE IF EXISTS `album_songs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `album_songs` (
+  `albumid` varchar(200) DEFAULT NULL,
+  `song_name` varchar(200) DEFAULT NULL,
+  `song_url` varchar(200) DEFAULT NULL,
+  `singer` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `album_songs`
+--
+
+LOCK TABLES `album_songs` WRITE;
+/*!40000 ALTER TABLE `album_songs` DISABLE KEYS */;
+/*!40000 ALTER TABLE `album_songs` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `chats_entry`
 --
 
@@ -169,7 +193,7 @@ CREATE TABLE `posts` (
   PRIMARY KEY (`postid`),
   KEY `userid` (`userid`),
   CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -178,8 +202,35 @@ CREATE TABLE `posts` (
 
 LOCK TABLES `posts` WRITE;
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
-INSERT INTO `posts` VALUES (12,'post2','love to use windows more','http://localhost:3000/uploads/images/71691506.png',32);
+INSERT INTO `posts` VALUES (12,'post2','love to use windows more','http://localhost:3000/uploads/images/71691506.png',32),(13,'post1','this is a post 2','http://localhost:3000/uploads/images/20337689.png',32);
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_albums`
+--
+
+DROP TABLE IF EXISTS `user_albums`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_albums` (
+  `userid` int(11) NOT NULL,
+  `albumid` varchar(200) DEFAULT NULL,
+  `album_name` varchar(200) DEFAULT NULL,
+  `album_photo_url` varchar(200) DEFAULT NULL,
+  KEY `userid` (`userid`),
+  CONSTRAINT `user_albums_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_albums`
+--
+
+LOCK TABLES `user_albums` WRITE;
+/*!40000 ALTER TABLE `user_albums` DISABLE KEYS */;
+INSERT INTO `user_albums` VALUES (32,'TUitxAvOfjqY4qR2kkFFYp7TP9AODXjP','post1','http://localhost:3000/uploads/albums/64808806.png'),(32,'tqMV6tThlFK2i8S5Kcu7H5j46oURfL5a','album1','http://localhost:3000/uploads/albums/71295147.png');
+/*!40000 ALTER TABLE `user_albums` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -222,4 +273,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-15 16:03:51
+-- Dump completed on 2021-05-16 10:09:37

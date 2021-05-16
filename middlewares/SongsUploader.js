@@ -2,15 +2,16 @@ const multer = require('multer')
 const uuid = require('uuid')
 
 const MIME_TYPES = {
-    'image/jpeg':'jpeg',
-    'image/jpg':'jpg',
-    'image/png':'png'
+    'audio/mpeg':'mp3',
+    'audio/x-mpeg-3':'mp3',
+    'audio/mpeg3':'mp3',
+    'audio/x-mpeg':'mp3'
 }
 
 const randomName = ()=>{
     return String(Math.floor(Math.random()*100000000))
 }
-const imageUploader = multer({
+const songsUploader = multer({
 
     limits:500000,
     storage:multer.diskStorage({
@@ -23,7 +24,7 @@ const imageUploader = multer({
 
         },
         destination:(req,file,cb)=>{
-            cb(null,'uploads/images')
+            cb(null,'uploads/songs')
         }
     }),
     fileFilter:(req,file,cb)=>{
@@ -36,4 +37,4 @@ const imageUploader = multer({
 })
 
 
-module.exports = imageUploader
+module.exports = songsUploader

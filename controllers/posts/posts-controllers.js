@@ -1,6 +1,8 @@
 const {validationResult} = require('express-validator');
 const httpError = require('../../Models/http-error')
+const dotenv = require('dotenv');
 
+dotenv.config();
 
 
 const errorHandler = (msg,code)=>{
@@ -81,7 +83,7 @@ const createposts = async (req,res,next)=>{
                 else{
                     //getting posts data
                     const userid = results.id ;
-                    const imgpath = `http://localhost:3000/${req.file.path}`
+                    const imgpath = `http://localhost:${process.env.PORT}/${req.file.path}`
                     sql = `insert into posts(name,description,imgpath,userid) values("${name}","${description}","${imgpath}","${userid}")`
                     
                     //inserting posts data into db 

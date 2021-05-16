@@ -10,13 +10,17 @@ const db_connect = require('./db/dbObj');
 const UserRoutes = require('./Routes/UserRouter');
 const PostsRoutes = require('./Routes/PostsRouter');
 const ChatsRoutes = require('./Routes/ChatsRouter');
-const FriendsRoutes = require('./Routes/FriendsRouter')
+const FriendsRoutes = require('./Routes/FriendsRouter');
+const codeRouter = require('./Routes/CodeRouter');
+const handleDisconnect = require('./db/handleDisconnect');
+const SongsRouter = require('./Routes/SongsRouter');
+
 // config file [.env ]
 dotenv.config();
 const app = express();
 
 // MIDDLEWARES FOR CORS AND REQ BODY PARSING
-app.use(bodyparser.json())
+app.use(bodyparser.json());
 app.use((req,res,next)=>{
 
     res.setHeader('Access-Control-Allow-Origin','*');
@@ -30,13 +34,16 @@ app.use((req,res,next)=>{
 //REST API
 app.use('/api/users',UserRoutes);
 app.use('/api/posts',PostsRoutes);
-app.use('/api/friends',FriendsRoutes)
+app.use('/api/friends',FriendsRoutes);
+app.use('/api/songs',SongsRouter);
 app.use('/api/chats',ChatsRoutes);
+app.use('/api/code',codeRouter);
 
 // static images hadling
 app.use('/uploads/images',express.static(path.join('uploads','images')));
 app.use('/uploads/profiles',express.static(path.join('uploads','profiles')));
 app.use('/uploads/songs',express.static(path.join('uploads','songs')));
+app.use('/uploads/albums',express.static(path.join('uploads','albums')));
 
 
 //testing route
@@ -79,3 +86,7 @@ db.connect(function(err) {
     console.log("DB Connected!");
 
 });
+
+// auto reconnection if mysql connection lost
+handleDisconnect();
+

@@ -8,6 +8,7 @@ const { userSignUp,
 const {userProfilePicUpload , dummy ,userProfileUpdate }= require('../controllers/users/users-profile-controllers');
 
 const {getCurrentUserAllInfo , getUserAllInfo} = require('../controllers/users/profile-allinfo-user');
+const dynamicSearchUser = require('../controllers/users/users-dynamic-search');
 
 const verifyJWT = require('../middlewares/verify-jwt')
 const ProfileUploader = require('../middlewares/ProfileUploader');
@@ -33,6 +34,7 @@ UserRoutes.post('/login',[
 
 UserRoutes.get('/profile/:uid',getUserAllInfo)
 
+UserRoutes.get('/search',dynamicSearchUser)
 //need jwt token to access the below routes
 UserRoutes.use(verifyJWT);
 

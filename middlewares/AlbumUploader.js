@@ -10,7 +10,7 @@ const MIME_TYPES = {
 const randomName = ()=>{
     return String(Math.floor(Math.random()*100000000))
 }
-const imageUploader = multer({
+const albumUploader = multer({
 
     limits:500000,
     storage:multer.diskStorage({
@@ -23,7 +23,7 @@ const imageUploader = multer({
 
         },
         destination:(req,file,cb)=>{
-            cb(null,'uploads/images')
+            cb(null,'uploads/albums')
         }
     }),
     fileFilter:(req,file,cb)=>{
@@ -36,4 +36,4 @@ const imageUploader = multer({
 })
 
 
-module.exports = imageUploader
+module.exports = albumUploader

@@ -11,7 +11,7 @@ module.exports = (req,res,next)=>{
     let token
     try{
         token = req.headers.authorization
-        console.log(token)
+       // console.log(token)
         if(!token){
             throw new Error('authentication failed in token verification')
         }

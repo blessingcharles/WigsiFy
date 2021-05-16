@@ -2,7 +2,6 @@ const express = require('express');
 const {check} = require('express-validator')
 
 const verifyJWT = require('../middlewares/verify-jwt');
-const UserRoutes = require('./UserRouter');
 const getChats = require('../controllers/chats/chats-controller');
 
 const ChatsRouter = express.Router();

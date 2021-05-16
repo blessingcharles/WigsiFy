@@ -1,7 +1,9 @@
 const {validationResult} = require('express-validator');
+const dotenv = require('dotenv');
 
 const httpError = require('../../Models/http-error')
 
+dotenv.config();
 
 // [/api/users/profile] (patch)
 const userProfileUpdate = (req,res,next)=>{
@@ -86,7 +88,7 @@ const userProfilePicUpload = (req,res,next)=>{
                 else{
                     //getting posts data
                     const userid = results.id ;
-                    const imgpath = `http://localhost:3000/${req.file.path}`
+                    const imgpath = `http://localhost:${process.env.PORT}/${req.file.path}`
                     sql = `update users set profile_pic_path="${imgpath}" where id = "${userid}"`
                     
                     //inserting posts data into db 
