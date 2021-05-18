@@ -6,6 +6,8 @@ const startFollowing = require('../controllers/friends-controllers/startFollowin
 const startUnfollowing = require('../controllers/friends-controllers/startUnfollow');
 const {getFollowersCount,getFollowingCount,getFollowers,getFollowing} = require('../controllers/friends-controllers/friends-info');
 
+const {getFollowersDynamic , getFollowingDynamic} = require('../controllers/friends-controllers/getFollowFollowers');
+
 const ChatsRouter = express.Router();
 
 
@@ -30,6 +32,9 @@ ChatsRouter.post('/unfollow',[
     check('fid').not().isEmpty()],
         startUnfollowing);
 
+
+// ChatsRouter.get('/getFollowers',getFollowersDynamic);
+// ChatsRouter.get('/getFollowing',getFollowingDynamic);
 
 
 

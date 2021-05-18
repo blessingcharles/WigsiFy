@@ -23,7 +23,7 @@ const createAlbums = (req,res,next)=>{
 
     //validating the request
     const error = validationResult(req);
-    if(!error.isEmpty()){
+    if(!error.isEmpty() || !req.file){
         //[name not in json req]
         return res.status(400).json({error:"invalid data"})
     }
@@ -37,7 +37,7 @@ const createAlbums = (req,res,next)=>{
                 results = results[0];
 
                 //failed to executes sql query 
-                if(error) res.status(500).json({error:"something went wrong"});
+                if(error ) res.status(500).json({error:"something went wrong"});
 
                 else if(!results){
                     const error = new httpError('creator id is wrong',400);
@@ -73,7 +73,8 @@ const createAlbums = (req,res,next)=>{
         
                                     res.json({name:name,userid:userid,imgpath:imgpath,albumid:random_albumid});
                                 }
-                            })        
+                            }) 
+
                         }
 
                     })

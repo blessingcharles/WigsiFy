@@ -2,6 +2,7 @@ const express = require('express')
 const {check} = require('express-validator');
 const imageUploader = require('../middlewares/ImageUploader')
 const verifyJWT = require('../middlewares/verify-jwt')
+const {getAllPosts} = require('../controllers/posts/getAllposts');
 
 const  {
     getpostsByCreatorId,
@@ -14,9 +15,9 @@ const  {
 
 const postsrouter = express.Router()
 
-postsrouter.get('/:pid',getpostsById)
-postsrouter.get('/user/:uid',getpostsByCreatorId)
-
+postsrouter.get('/:pid',getpostsById);
+postsrouter.get('/user/:uid',getpostsByCreatorId);
+postsrouter.get('/all/posts',getAllPosts);
 postsrouter.use(verifyJWT)
 
 postsrouter.post('/',

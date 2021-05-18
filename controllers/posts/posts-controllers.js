@@ -59,7 +59,7 @@ const createposts = async (req,res,next)=>{
 
     //validating the request
     const error = validationResult(req);
-    if(!error.isEmpty()){
+    if(!error.isEmpty() || !req.file ){
         //[name , descrition not in json req]
         return res.status(400).json({error:"invalid data"})
     }

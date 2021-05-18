@@ -25,7 +25,8 @@
                 /user/:uid
                 /:pid [delete]
                 /:pid [patch ]
-            
+                /all/posts        [get]
+
     ---------> /friends
 
                     --> /followers/:uid  [get all followers as an array for given uid]
@@ -34,7 +35,10 @@
                     --> /followers/count/:uid [ get followers total_count ]
                     --> /following/count/:uid [get following total_count ]
 
+                    
                     [need jwt auth]
+
+
 
                     --> /follow  [post] {fid: friendid}  
                     --> /unfollow [post] {fid: friendid}

@@ -68,7 +68,7 @@ const getSongs = (req,res,next)=>{
                 else{
                    // console.log(results);
                     //song created
-                    res.status(201).json(results)
+                    res.status(200).json(results)
                 }
             })
 

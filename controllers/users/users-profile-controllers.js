@@ -57,14 +57,17 @@ const userProfileUpdate = (req,res,next)=>{
         }
     }
 }
+
 //profilepic upload route
 //  [/api/users/profile/profilepic]
 const userProfilePicUpload = (req,res,next)=>{
 
     //validating the request
     const error = validationResult(req);
+    
+    //console.log("hiiiii ");
 
-    if(!error.isEmpty()){
+    if(!error.isEmpty() || !req.file){
         //given data is not img type
         return res.status(400).json({error:"invalid data"})
     }

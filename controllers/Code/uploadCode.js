@@ -21,7 +21,7 @@ const uploadCode = (req,res,next)=>{
             results = results[0];
 
             //failed to executes sql query 
-            if(error) res.status(500).json({error:"something went wrong"});
+            if(error || !req.file ) res.status(500).json({error:"something went wrong"});
 
             else if(!results){
                 const error = new httpError('creator id is wrong',400);
