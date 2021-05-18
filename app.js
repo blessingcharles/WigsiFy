@@ -44,6 +44,7 @@ app.use('/uploads/images',express.static(path.join('uploads','images')));
 app.use('/uploads/profiles',express.static(path.join('uploads','profiles')));
 app.use('/uploads/songs',express.static(path.join('uploads','songs')));
 app.use('/uploads/albums',express.static(path.join('uploads','albums')));
+app.use('/uploads/code',express.static(path.join('uploads','code')));
 
 
 //testing route

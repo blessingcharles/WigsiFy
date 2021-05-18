@@ -102,7 +102,7 @@ const userSignUp =async (req,res,next)=>{
                     console.log(results)
                     let token
                     try{
-                        token = jwt.sign({email:email,id:results.id},process.env.JWT_SECRETKEY,{expiresIn:'1h'})
+                        token = jwt.sign({email:email,id:results.id},process.env.JWT_SECRETKEY,{expiresIn:'21h'})
                         
                         res
                         .status(201)
@@ -164,7 +164,7 @@ const userLogIn = async (req,res,next)=>{
                         //generating jwt token
                         let token
                         try{
-                            token = jwt.sign({email:email,id:identifyUser.id},process.env.JWT_SECRETKEY,{expiresIn:'1h'})
+                            token = jwt.sign({email:email,id:identifyUser.id},process.env.JWT_SECRETKEY,{expiresIn:'21h'})
                         }
                         catch(err){
                             const error = new httpError('try again later',400)

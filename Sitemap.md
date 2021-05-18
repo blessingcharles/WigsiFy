@@ -68,7 +68,7 @@
                 /status/:uid
 
     ------> /chats
-                /:fid       [give the recent 100 msgs between uid and fid]
+                {uid,fid}       [give the recent 100 msgs between uid and fid]
                 
 /uploads/images
 /uploads/profile
