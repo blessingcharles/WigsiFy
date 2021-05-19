@@ -8,6 +8,8 @@ const {getFollowersCount,getFollowingCount,getFollowers,getFollowing} = require(
 
 const {getFollowersDynamic , getFollowingDynamic} = require('../controllers/friends-controllers/getFollowFollowers');
 
+const {isFollowing} = require('../controllers/friends-controllers/isfollowing');
+
 const ChatsRouter = express.Router();
 
 
@@ -20,6 +22,10 @@ ChatsRouter.get('/following/:uid',getFollowing);
 ChatsRouter.get('/followers/count/:uid',getFollowersCount);
 ChatsRouter.get('/following/count/:uid',getFollowingCount);
 
+ChatsRouter.post('/isfollowing', 
+        [check('fid').not().isEmpty(),
+        check('uid').not().isEmpty()],
+        isFollowing) ;
 
 //[ user must be signed in to follow others ]
 ChatsRouter.use(verifyJWT);

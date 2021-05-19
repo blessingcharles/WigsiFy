@@ -7,8 +7,7 @@ const { uploadCode } = require('../controllers/Code/uploadCode');
 const codeUploader = require('../middlewares/CodeUploader');
 const getCode = require('../controllers/Code/getCode');
 
-const codeRouter = express.Router()
-
+const codeRouter = express.Router();
 
 codeRouter.get('/:userid',getCode);
 

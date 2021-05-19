@@ -8,7 +8,7 @@ const dynamicSearchUser = (req,res,next)=>{
 
     if(query){
         //using regex to match all username for given query
-        let sql = `select name,id,email,FavLang,About,profession,mobile from users where name REGEXP "^${query}.*"`;
+        let sql = `select name,id,email,FavLang,About,profession,mobile,profile_pic_path from users where name REGEXP "^${query}.*"`;
 
         db.query(sql,(error,results)=>{
             

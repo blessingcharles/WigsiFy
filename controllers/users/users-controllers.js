@@ -104,6 +104,7 @@ const userSignUp =async (req,res,next)=>{
                     try{
                         token = jwt.sign({email:email,id:results.id},process.env.JWT_SECRETKEY,{expiresIn:'21h'})
                         
+                        
                         res
                         .status(201)
                         .json({email:email,token:token,id:results.id});

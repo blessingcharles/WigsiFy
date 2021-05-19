@@ -35,9 +35,9 @@
                     --> /followers/count/:uid [ get followers total_count ]
                     --> /following/count/:uid [get following total_count ]
 
+                    ---> /isfollowing [post] { uid , fid }
                     
                     [need jwt auth]
-
 
 
                     --> /follow  [post] {fid: friendid}  
