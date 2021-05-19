@@ -16,6 +16,7 @@ const getFollowersDynamic = (req,res,next)=>{
             
             if(error)   res.status(500).json({error:"something went wrong"});
             else{
+                
                 res.status(200).json(results)
             }
         })

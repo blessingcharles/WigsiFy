@@ -70,10 +70,7 @@ const getFollowers = (req,res,next)=>{
         db.query(sql,(error,results)=>{
 
             if (results){
-                let followers = results;
-                res.status(200).json({
-                     followers
-                })
+                res.status(200).json(results)
             }
             else{
                 res.status(400).json({error:"something went wrong"});
