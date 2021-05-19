@@ -39,7 +39,7 @@ SongsRouter.delete('/albums/delete/:album_name',deleteAlbums);
 // get all songs for an album          
 SongsRouter.get('/:album_name',getSongs);
 
-SongsRouter.delete('/delete',[
+SongsRouter.post('/delete',[
 
     check('song_name').not().isEmpty(),
     check('album_name').not().isEmpty()
