@@ -107,7 +107,7 @@ const userSignUp =async (req,res,next)=>{
                         
                         res
                         .status(201)
-                        .json({email:email,token:token,id:results.id});
+                        .json({email:email,token:token,userid:results.id});
         
                     }
                     catch(err){
@@ -174,7 +174,7 @@ const userLogIn = async (req,res,next)=>{
                     
                         res
                         .status(200)
-                        .json({email:email,userId:identifyUser.id,token:token});
+                        .json({email:email,userid:identifyUser.id,token:token});
                     }
                 
 
