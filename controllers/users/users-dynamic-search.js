@@ -1,6 +1,7 @@
 
 
 //dynamic search user  /api/users/search?q=[]
+const LIMIT = 50 ;
 
 const dynamicSearchUser = (req,res,next)=>{
 
@@ -19,7 +20,16 @@ const dynamicSearchUser = (req,res,next)=>{
         })
     }
     else{
-        res.status(200).json([])
+	let sql = `select name,id,email,FavLang,About,profession,mobile,profile_pic_path from users limit ${LIMIT}` ;
+
+        db.query(sql,(error,results)=>{
+            
+            if(error)   res.status(500).json({error:"something went wrong"});
+            else{
+                res.status(200).json(results)
+            }
+        })
+       
     }
 
 
