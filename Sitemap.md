@@ -1,3 +1,8 @@
+//frontend 5000
+//api backend 3000
+//chats server 3300
+
+
 /api
     ----> /users            
                 
@@ -36,7 +41,7 @@
                     --> /following/count/:uid [get following total_count ]
 
                     ---> /isfollowing [post] { uid , fid }
-                    
+
                     [need jwt auth]
 
 

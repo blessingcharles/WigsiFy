@@ -44,7 +44,7 @@ const startUnfollowing = (req,res,next)=>{
                         if(error) res.status(400).json({error:"couldnot unfollow the user"})
                         else{
 
-                            res.status(201);
+                            res.status(200);
                             res.json({uid:userid , fid,fid});
                         }
                     })
