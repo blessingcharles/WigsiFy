@@ -34,3 +34,4 @@ CREATE PROCEDURE followings_count_proc()
     CLOSE followings;
   END $$
 DELIMITER ;
+

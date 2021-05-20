@@ -30,7 +30,7 @@ const getChats = (req,res,next)=>{
             else if(results[0]){
               let chats_table_name = results[0].chats_table_name ;
               //getting the chats from table
-              sql = `select * from ( select senderid,msg,timestamp,users.name from ${chats_table_name} , users where senderid = users.id order by timestamp desc limit ${NO_OF_CHATS})var2 order by timestamp asc` ;
+              sql = `select * from ( select senderid as username,msg,timestamp,users.name from ${chats_table_name} , users where senderid = users.id order by timestamp desc limit ${NO_OF_CHATS})var2 order by timestamp asc` ;
 
               db.query(sql,(error,results)=>{
 
